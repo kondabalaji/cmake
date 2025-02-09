@@ -39,6 +39,4 @@ jobs:
         name: build-artifacts
         path: build/
     - name: Run tests
-      run: |
-        cd build
-        ctest --test-dir .
+      run: ctest --test-dir build

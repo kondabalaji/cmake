@@ -40,5 +40,5 @@ jobs:
         path: build/
     - name: Run tests
       run: |
-        chmod +x MyExample
+        chmod +x build/MyExample
         ctest --test-dir build

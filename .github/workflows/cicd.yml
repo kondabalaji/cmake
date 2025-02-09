@@ -13,33 +13,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
-
+    - uses: actions/checkout@v4
+    - run: mkdir -p build
+    - uses: actions/upload-artifact@v4
+      with:
+          name: my-artifact
+          path: build
+          
     - name: Install CMake
       run: sudo apt-get install -y cmake
-
-    - name: Create build directory
-      run: mkdir -p build
-
+    
     - name: Configure CMake
       run: cmake -S . -B build
 
   build:
     runs-on: ubuntu-latest
     needs: configure
-    defaults:
-      run:
-        working-directory: ./
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-
-    - name: Create build directory
-      run: mkdir -p build
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: my-artifact
+          path: build
       
-    - name: Build
-      run: cmake --build build
+      - name: Build
+        run: cmake --build build
 
   test:
     runs-on: ubuntu-latest

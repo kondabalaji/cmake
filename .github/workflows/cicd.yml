@@ -41,12 +41,3 @@ jobs:
     - name: Run tests
       run: ctest --test-dir build
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Deploy App
-      run: ./MyExample

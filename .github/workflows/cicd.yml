@@ -31,8 +31,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Path
+      run: pwd
+
     - name: Build
-      run: cmake --build build
+      run: cmake -S . -B build --build build
 
   test:
     runs-on: ubuntu-latest

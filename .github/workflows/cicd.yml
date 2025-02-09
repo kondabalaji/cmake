@@ -23,7 +23,7 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4  # Updated to v3
       with:
-        name: build
+        name: build-artifacts
         path: build/
         
   test:
@@ -32,6 +32,13 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-
+      
+    - name: download  build artifacts
+      uses: actions/download-artifact@v4  # Updated to v3
+      with:
+        name: build-artifacts
+        path: build/
     - name: Run tests
-      run: ctest --test-dir build
+      run: |
+        cd build
+        ctest --test-dir .

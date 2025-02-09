@@ -1,0 +1,52 @@
+name: CMake CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  configure:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install CMake
+      run: sudo apt-get install -y cmake
+
+    - name: Configure CMake
+      run: cmake -S . -B build
+
+  build:
+    runs-on: ubuntu-latest
+    needs: configure
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build
+      run: cmake --build build
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Run tests
+      run: ctest --test-dir build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Deploy App
+      run: ./MyExample

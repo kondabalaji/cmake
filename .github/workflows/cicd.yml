@@ -39,4 +39,6 @@ jobs:
         name: build-artifacts
         path: build/
     - name: Run tests
-      run: ctest --test-dir build
+      run: |
+        chmod +x MyExample
+        ctest --test-dir build

@@ -42,6 +42,6 @@ target_link_libraries(MyExample PRIVATE MyLibExample)
 # This part is so the Modern CMake book can verify this example builds. For your code,
 # you'll probably want tests too
 
-#testing
+#testing123
 enable_testing()
 add_test(NAME MyExample COMMAND MyExample)

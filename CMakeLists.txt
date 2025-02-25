@@ -10,10 +10,40 @@ cmake_minimum_required(VERSION 3.15...3.31)
 
 # This is your project statement. You should always list languages;
 # Listing the version is nice here since it sets lots of useful variables
+
+
+
+set(CMAKE_C_COMPILER gcc)
+set(CMAKE_CXX_COMPILER "C:/Program Files/Gcc/bin/g++.exe")
+
+find_program(CMAKE_MAKE_PROGRAM
+  NAMES make
+        make.exe
+  DOC "Find a suitable make program for building under Windows/MinGW"
+  HINTS c:/MinGW/bin )
+
 project(
   ModernCMakeExample
   VERSION 1.0
   LANGUAGES CXX)
+
+set(CMAKE_C_COMPILER gcc)
+set(CMAKE_CXX_COMPILER "C:/Program Files/Gcc/bin/g++.exe")
+
+find_program(CMAKE_MAKE_PROGRAM
+  NAMES make
+        make.exe
+  DOC "Find a suitable make program for building under Windows/MinGW"
+  HINTS c:/MinGW/bin ) 
+
+
+#find_program(CMAKE_CXX_COMPILER
+# NAMES mingw32-g++
+#       make.exe
+#  DOC "Find a suitable compiler  program for building under Windows/MinGW"
+# HINTS c:/MinGW/bin )
+
+#set(CMAKE_MAKE_PROGRAM make)
 
 # If you set any CMAKE_ variables, that can go here.
 # (But usually don't do this, except maybe for C++ standard)

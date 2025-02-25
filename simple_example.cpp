@@ -6,8 +6,8 @@
 
 int main() {
 
-    std::cout << "Simple example C++ compiled correctly and ran cmake." << std::endl;
-    std::cout << simple_lib_function() << std::endl;
+    std::cout << "Simple example  to check C++ compiled correctly and ran cmake." << std::endl;
+    std::cout << "-----" <<simple_lib_function() << std::endl;
 
     return 0;
 }
